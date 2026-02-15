@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Proyectos | Jean Mario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-bs-theme="dark" class="bg-black">
+
+    <nav class="navbar navbar-expand-lg sticky-top blur-nav">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-info" href="index.html">← VOLVER AL INICIO</a>
+            <span class="text-secondary d-none d-md-block">Systems Engineer Portfolio</span>
+        </div>
+    </nav>
+
+    <main class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-800 text-white">Project <span class="text-info">Dashboard</span></h2>
+            <p class="text-secondary">Selecciona una tecnología para filtrar mis soluciones técnicas.</p>
+        </div>
+
+        <div class="d-flex flex-wrap justify-content-center gap-3 mb-5" data-aos="fade-up">
+            <button class="btn btn-outline-info active filter-btn" onclick="filterProjects('all')">Todos</button>
+            <button class="btn btn-outline-success filter-btn" onclick="filterProjects('excel')">
+                <i class="bi bi-file-earmark-excel"></i> Excel
+            </button>
+            <button class="btn btn-outline-warning filter-btn" onclick="filterProjects('pbi')">
+                <i class="bi bi-bar-chart-fill"></i> Power BI
+            </button>
+            <button class="btn btn-outline-primary filter-btn" onclick="filterProjects('sql')">
+                <i class="bi bi-database-fill"></i> SQL Server
+            </button>
+            <button class="btn btn-outline-danger filter-btn" onclick="filterProjects('python')">
+                <i class="bi bi-filetype-py"></i> Python
+            </button>
+        </div>
+
+        <div class="row g-4" id="project-container">
+            
+            <div class="col-md-6 project-card excel" data-aos="zoom-in">
+                <div class="project-box p-4 border border-secondary rounded-4 bg-dark h-100">
+                    <span class="badge bg-success mb-2">Excel / VBA</span>
+                    <h3 class="h4 text-white">Dashboard de Activos Mineros</h3>
+                    <p class="text-secondary small">Automatización de reportes de mantenimiento predictivo con Macros y Power Query.</p>
+                    <div class="d-flex gap-2 mt-3">
+                        <span class="text-info small">#Minería</span> <span class="text-info small">#DataCleaning</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 project-card pbi" data-aos="zoom-in">
+                <div class="project-box p-4 border border-secondary rounded-4 bg-dark h-100">
+                    <span class="badge bg-warning text-dark mb-2">Business Intelligence</span>
+                    <h3 class="h4 text-white">Análisis de Riesgo BBVA</h3>
+                    <p class="text-secondary small">Dashboard interactivo con DAX para la visualización de cartera vencida y mora bancaria.</p>
+                    <div class="d-flex gap-2 mt-3">
+                        <span class="text-info small">#Banca</span> <span class="text-info small">#DAX</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 project-card sql" data-aos="zoom-in">
+                <div class="project-box p-4 border border-secondary rounded-4 bg-dark h-100">
+                    <span class="badge bg-primary mb-2">SQL Server</span>
+                    <h3 class="h4 text-white">Arquitectura de Datos Bancarios</h3>
+                    <p class="text-secondary small">Diseño de triggers y procedimientos almacenados para la integridad de transacciones.</p>
+                    <div class="d-flex gap-2 mt-3">
+                        <span class="text-info small">#Backend</span> <span class="text-info small">#DatabaseDesign</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 project-card python" data-aos="zoom-in">
+                <div class="project-box p-4 border border-secondary rounded-4 bg-dark h-100">
+                    <span class="badge bg-danger mb-2">Python / Pandas</span>
+                    <h3 class="h4 text-white">ETL Pipeline para Minería</h3>
+                    <p class="text-secondary small">Script automatizado para la extracción y transformación de datos brutos de sensores.</p>
+                    <div class="d-flex gap-2 mt-3">
+                        <span class="text-info small">#Automation</span> <span class="text-info small">#ETL</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        function filterProjects(category) {
+            // Actualizar botones
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            // Filtrar tarjetas
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                card.style.display = 'none'; // Desaparece todo
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'block'; // Aparece solo lo seleccionado
+                }
+            });
+        }
+    </script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 600 });</script>
+</body>
+</html>

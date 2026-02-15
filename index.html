@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yutzz | Cyber Systems Engineer</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+JP:wght@700;900&family=Space+Mono&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --neon-cyan: #00f3ff;
+            --neon-pink: #ff007a;
+            --neon-purple: #9d00ff;
+            --neon-red: #ff0000;
+            --dark-core: #050506;
+            --card-glass: rgba(10, 10, 15, 0.9);
+        }
+
+        body { 
+            font-family: 'Space Mono', monospace; 
+            background-color: var(--dark-core); 
+            color: #fff;
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* --- CLASE PARA EL NOMBRE EN AZUL NEÓN --- */
+        .name-cyan {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+        }
+
+        /* --- ANIMACIÓN DE PARPADEO ROJO --- */
+        @keyframes blink-red {
+            0%, 100% { opacity: 1; color: var(--neon-red); text-shadow: 0 0 12px var(--neon-red); }
+            50% { opacity: 0.4; color: #fff; text-shadow: none; }
+        }
+
+        .blink-red {
+            animation: blink-red 1.5s infinite;
+        }
+
+        /* --- BOTONES DE CONTACTO --- */
+        .btn-contact {
+            padding: 10px 22px;
+            border: 2px solid;
+            font-weight: bold;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        .btn-whatsapp { border-color: #25D366; color: #25D366; }
+        .btn-whatsapp:hover { background: #25D366; color: #000; box-shadow: 0 0 20px #25D366; }
+        .btn-gmail { border-color: var(--neon-cyan); color: var(--neon-cyan); }
+        .btn-gmail:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 20px var(--neon-cyan); }
+
+        .img-hover-effect {
+            transition: transform 0.4s ease, filter 0.4s ease;
+            cursor: pointer;
+        }
+        .img-hover-effect:hover {
+            transform: scale(1.03);
+            filter: drop-shadow(0 0 20px var(--neon-cyan));
+        }
+
+        .footer-logo {
+            width: 120px;
+            filter: drop-shadow(0 0 10px var(--neon-cyan)) brightness(1.2);
+            transition: 0.4s ease;
+        }
+
+        .social-link {
+            color: #fff;
+            font-size: 1.6rem;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .social-link:hover {
+            color: var(--neon-cyan);
+            transform: translateY(-3px);
+            display: inline-block;
+        }
+
+        .kanji-float {
+            position: fixed;
+            font-family: 'Noto Sans JP';
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.02);
+            z-index: -1;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        h1, h2, h3, .navbar-brand {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-name {
+            font-size: clamp(2.2rem, 9vw, 5rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, #fff, var(--neon-cyan), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+
+        .blur-nav {
+            background: rgba(5, 5, 6, 0.95);
+            border-bottom: 2px solid var(--neon-cyan);
+            backdrop-filter: blur(10px);
+        }
+
+        .cert-card {
+            background: var(--card-glass);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            transition: 0.4s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border-radius: 4px;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 20px rgba(255, 0, 122, 0.3);
+        }
+
+        .cert-preview {
+            width: 100%;
+            height: 160px;
+            background: #000;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+        }
+        .cert-preview embed { width: 100%; height: 100%; object-fit: cover; }
+
+        .btn-anime {
+            background: transparent;
+            color: var(--neon-cyan);
+            border: 2px solid var(--neon-cyan);
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn-anime:hover {
+            background: var(--neon-cyan);
+            color: #000;
+            box-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        .btn-pink { border-color: var(--neon-pink); color: var(--neon-pink); }
+        .btn-pink:hover { background: var(--neon-pink); color: #fff; }
+
+        @media (max-width: 768px) {
+            .kanji-float { font-size: 6rem !important; }
+            section { padding-top: 80px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="kanji-float" style="top: 15%; left: 5%; font-size: 15rem;">分析</div>
+    <div class="kanji-float" style="bottom: 10%; right: 5%; font-size: 12rem;">システム</div>
+
+    <nav class="navbar navbar-expand-lg fixed-top blur-nav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <span class="name-cyan">Yutzzz-ToeMoe</span><span class="blink-red">.exe</span>
+            </a>
+            <button class="navbar-toggler border-info" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list text-info fs-2"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto fw-bold text-center py-3 py-lg-0">
+                    <li class="nav-item"><a class="nav-link text-white" href="#hero">// INICIO</a></li>
+                    <li class="nav-item"><a class="nav-link text-info" href="proyectos.html">// PROYECTOS</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#docs">// DOCS</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#formacion">// ESTUDIOS</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero" class="d-flex align-items-center min-vh-100">
+        <div class="container">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-7 text-center text-lg-start" data-aos="fade-right">
+                    <div class="d-flex justify-content-center justify-content-lg-start align-items-center gap-3 mb-3">
+                        <span class="badge bg-info text-dark fw-bold">LEVEL 10 ENGINEER</span>
+                        <span class="blink-red fw-bold small">● STATUS: ONLINE</span>
+                    </div>
+                    <h1 class="hero-name">JEAN MARIO<br>PAREDES</h1>
+                    <p class="lead mb-4 text-white-50 mx-auto mx-lg-0" style="max-width: 500px; border-left: 4px solid var(--neon-pink); padding-left: 15px;">
+                         profesional en formación <span class="text-info fw-bold">Data Analytics</span> para Banca y Minería. 
+                        Dominio de SQL, Excel y Power BI.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start mb-4">
+                        <a href="https://wa.me/51924167334" target="_blank" class="btn-contact btn-whatsapp">
+                            <i class="bi bi-whatsapp"></i> WhatsApp
+                        </a>
+                        <a href="mailto:mariojean117@gmail.com" class="btn-contact btn-gmail">
+                            <i class="bi bi-envelope-at"></i> Gmail Direct
+                        </a>
+                    </div>
+
+                    <div class="d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start">
+                        <a href="proyectos.html" class="btn btn-anime btn-lg px-4 btn-pink">📂 PROYECTOS</a>
+                        <a href="#formacion" class="btn btn-anime btn-lg px-4">📜 CERTIFICADOS</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center" data-aos="zoom-in">
+                    <img src="assets/img/foto.png" alt="Jean Mario" class="img-fluid img-hover-effect" style="max-height: 400px; filter: drop-shadow(0 0 15px var(--neon-cyan));">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="docs" class="py-5">
+        <div class="container text-center text-md-start">
+            <h2 class="fw-bold mb-5" data-aos="fade-right"><span class="text-info">>></span> VALIDACIÓN</h2>
+            
+            <div class="row g-4 justify-content-center mb-5">
+                <div class="col-12 col-md-6 col-lg-5" data-aos="flip-left">
+                    <div class="cert-card">
+                        <div class="cert-preview">
+                            <embed src="Certificados/certijoven.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" type="application/pdf">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="fw-bold">CERTIFICADO ÚNICO</h4>
+                            <p class="text-secondary small">Certijoven - MTPE</p>
+                            <div class="d-flex gap-2 mt-3">
+                                <button onclick="openPdfModal('Certificados/certijoven.pdf', 'Certificado Único')" class="btn btn-anime w-100">FULL_VIEW</button>
+                                <a href="https://www.empleosperu.gob.pe/CertificadoUnicoLaboral/Verificacion.html?cul=20258987446&numdoc=72882941" target="_blank" class="btn btn-outline-light"><i class="bi bi-qr-code"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-5" data-aos="flip-left" data-aos-delay="100">
+                    <div class="cert-card">
+                        <div class="cert-preview">
+                            <embed src="Certificados/CONSTANCIAPRACTICA.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" type="application/pdf">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="fw-bold">PRÁCTICAS</h4>
+                            <p class="text-secondary small">Hospital de Chancay</p>
+                            <div class="d-flex gap-2 mt-3">
+                                <button onclick="openPdfModal('Certificados/CONSTANCIAPRACTICA.pdf', 'Constancia')" class="btn btn-anime w-100">FULL_VIEW</button>
+                                <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalVerificarInstitucion"><i class="bi bi-broadcast"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 id="formacion" class="text-info mb-4 fw-bold mt-5" data-aos="fade-up">TERMINAL_LOGS: CERTIFICACIONES</h4>
+            <div class="row g-3" id="cert-container">
+                <script>
+                    const certs = [
+                        {n: "1. Python Essentials 1", s: "Cisco Networking Academy", f: "Python Essentials 1.pdf", id: "a9154681-1155-4b79-9d11-38b2705fe202"},
+                        {n: "2. Introduction to Data Science", s: "Cisco Badge", f: "Introduction to Data Science.pdf", id: "d2ae0a56-ca5d-45e1-a2b1-9382c5de1753"},
+                        {n: "3. Junior Cybersecurity Analyst", s: "Cisco Career Path", f: "Junior Cybersecurity Analyst Career Path.pdf", id: "66ccadba-89b4-4a1d-9dc6-516b7f947133"},
+                        {n: "4. CCNA: Switching & Routing", s: "Wireless Essentials", f: "CCNA Switching, Routing, and Wireless Essentials.pdf", id: "8a94b40a-e58a-4a3a-a74d-51cfc5c28579"},
+                        {n: "5. CyberOps Associate", s: "Cisco Certification", f: "CyberOps Associate.pdf", id: "1083ee46-d02e-4768-91c7-169e9102a505"},
+                        {n: "6. Network Technician", s: "Career Path", f: "Network Technician Career Path.pdf", id: "a23c54ef-7bf5-4b8b-b7ef-ab5285b5bc72"},
+                        {n: "7. Computer Hardware Basics", s: "Cisco Networking Academy", f: "Computer Hardware Basics.pdf", id: "1beb9aaf-7ef6-46c8-9126-205da13a6fc7"},
+                        {n: "8. Introduction to Modern AI", s: "Intel / Cisco", f: "Introduction to Modern AI.pdf", id: "b75ed0ad-68d2-40b8-a640-7d4809519828"},
+                        {n: "9. Conciencia digital", s: "UPN / Cisco", f: "Concienciadigital.pdf"},
+                        {n: "10. Introduction to IoT", s: "Cisco Networking Academy", f: "Introduction to IoT.pdf", id: "44689799-9968-4736-8aec-fb97968b1d23"},
+                        {n: "11. Introduction to Cybersecurity", s: "Cisco Badge", f: "Introduction to Cybersecurity.pdf", id: "98ae75b0-d93b-4f50-bafb-0bfd120c4532"},
+                        {n: "12. Digital Awareness", s: "Cisco Networking Academy", f: "Digital Awareness.pdf", id: "89e12000-1126-4ff5-9dbb-18ff73aea31c"},
+                        {n: "13. Computer and Mobile Devices", s: "Cisco Academy", f: "Using Computer and Mobile Devices.pdf", id: "1c0cf38e-00ed-4573-97e8-74616ad3dcdc"},
+                        {n: "14. Linux Fundamentals", s: "Red Hat (RH104)", f: "Red Hat Training Getting Started with Linux Fundamentals (RH104 - RHA) - Ver. 9.1.pdf", id: "e300e20e-910d-4875-9da9-f793c5c6d823"}
+                    ];
+
+                    certs.forEach(c => {
+                        document.write(`
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="cert-card">
+                                    <div class="cert-preview">
+                                        <embed src="Certificados/${c.f}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" type="application/pdf">
+                                    </div>
+                                    <div class="p-3">
+                                        <h6 class="fw-bold mb-1 text-info">${c.n}</h6>
+                                        <p class="small text-secondary mb-3">${c.s}</p>
+                                        <div class="d-flex gap-2">
+                                            <button onclick="openPdfModal('Certificados/${c.f}', '${c.n}')" class="btn btn-sm btn-anime w-100 text-uppercase">OPEN</button>
+                                            ${c.id ? `<a href="https://www.credly.com/badges/${c.id}" target="_blank" class="btn btn-sm btn-outline-light">VERIFY</a>` : ''}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+                    });
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="globalPdfModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content bg-black border-info">
+                <div class="modal-header border-info">
+                    <h5 class="modal-title text-info fw-bold" id="pdfModalTitle">FILE_ACCESS</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <iframe id="pdfFrame" src="" width="100%" height="700px" style="border: none;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalVerificarInstitucion" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark">
+                <div class="modal-header border-info">
+                    <h6 class="modal-title text-info fw-bold">// DATOS_INSTITUCIONALES</h6>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 text-white">
+                    <div class="bg-black p-3 mb-4" style="border-left: 3px solid var(--neon-pink);">
+                        <p class="small mb-1">ENTITY: HOSPITAL DE CHANCAY</p>
+                        <p class="small mb-1 text-info">RUC: 20284684827</p>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button onclick="enviarGmail('comunicaciones@hospitaldechancay.gob.pe')" class="btn btn-anime">GMAIL: COMUNICACIONES</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 text-center mt-5" style="border-top: 2px solid var(--neon-purple);">
+        <div class="container">
+            <img src="assets/img/logo.png" class="footer-logo mb-3" alt="Logo Yutzz Systems">
+            
+            <h5 class="fw-bold mb-3">JEAN MARIO PAREDES LÁZARO</h5>
+            
+            <div class="d-flex justify-content-center gap-4 mb-4">
+                <a href="https://www.linkedin.com/in/jean-mario-paredes-lazaro-3134843ab/" target="_blank" class="social-link"><i class="bi bi-linkedin"></i></a>
+                <a href="https://github.com/Yut-oni" target="_blank" class="social-link"><i class="bi bi-github"></i></a>
+                <a href="https://wa.me/51924167334" target="_blank" class="social-link"><i class="bi bi-whatsapp"></i></a>
+            </div>
+
+            <div class="mb-3">
+                <a href="mailto:mariojean117@gmail.com" class="text-info text-decoration-none mx-2 small"><i class="bi bi-envelope"></i> mariojean117@gmail.com</a>
+                <a href="tel:+51924167334" class="text-info text-decoration-none mx-2 small"><i class="bi bi-phone"></i> +51 924 167 334</a>
+            </div>
+            <p class="small text-secondary">© 2026 <span class="blink-red fw-bold">Yutzzz-ToeMoe.exe</span> - PERÚ</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        function openPdfModal(fileName, title) {
+            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                window.open(fileName, '_blank');
+            } else {
+                document.getElementById('pdfModalTitle').innerText = title;
+                document.getElementById('pdfFrame').src = fileName + "#toolbar=0";
+                new bootstrap.Modal(document.getElementById('globalPdfModal')).show();
+            }
+        }
+
+        function enviarGmail(email) {
+            const subject = encodeURIComponent("Verificación de prácticas - Jean Mario Paredes");
+            const body = encodeURIComponent("Hola, solicito validación del certificado de Jean Mario Paredes Lázaro...");
+            window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`, '_blank');
+        }
+    </script>
+</body>
+</html>
